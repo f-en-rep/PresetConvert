@@ -19,12 +19,13 @@ Marinara는 SillyTavern 프리셋을 가져올 때 매크로를 그대로 두기
 
 1. Marinara 서버의 `.env`에 `ENABLE_EXTERNAL_EXTENSIONS=true`를 넣고 Marinara를 다시 켜요.
 2. **Settings → Advanced → Danger Zone**에서 **Allow third-party extension imports**를 켜요.
-3. **Settings → Addons → External Extensions**에서 둘 중 하나로 가져와요.
-   - **Import Extension Folder**: `release/SillyTavern Macro Compatibility` 폴더를 고르기
-   - **Import Extension File**: 그 폴더를 ZIP으로 묶은 파일 고르기
+3. **Settings → Addons → External Extensions**에서 셋 중 하나로 가져와요.
+   - **GitHub 확장 관리자**를 쓰고 있다면 `https://github.com/f-en-rep/PresetConvert`를 입력해 `manifest.json`을 고르기
+   - **Import Extension Folder**: 이 저장소를 내려받아 폴더째 고르기
+   - **Import Extension File**: `manifest.json`과 `extension.js` 두 파일을 ZIP으로 묶어 고르기
 4. 목록에서 확장을 누르고 **Enable → Run Exact Code**로 승인해요.
 
-이 확장은 **전체 페이지 접근(Full page access)** 권한이 필요해요. 프리셋을 읽고 고쳐야 하고, 생성 요청 직전에 값을 채워야 하기 때문이에요. 코드는 `release/.../extension.js` 한 파일이니 승인하기 전에 열어 볼 수 있어요.
+이 확장은 **전체 페이지 접근(Full page access)** 권한이 필요해요. 프리셋을 읽고 고쳐야 하고, 생성 요청 직전에 값을 채워야 하기 때문이에요. 실행되는 코드는 저장소 루트의 `extension.js` 한 파일이니 승인하기 전에 열어 볼 수 있어요.
 
 휴대폰이나 다른 기기에서 Marinara에 접속한다면, Marinara 안내대로 `ADMIN_SECRET`도 설정해야 확장을 가져올 수 있어요.
 
@@ -87,7 +88,7 @@ Marinara는 SillyTavern 프리셋을 가져올 때 매크로를 그대로 두기
 npm run build
 ```
 
-`src/`를 고친 뒤 위 명령을 실행하면 `release/SillyTavern Macro Compatibility/`의 설치용 패키지가 다시 만들어져요.
+`src/`를 고친 뒤 위 명령을 실행하면 루트의 `extension.js`가 다시 만들어져요. `manifest.json`과 `extension.js`가 설치되는 파일이에요.
 
 | 파일 | 내용 |
 |---|---|
@@ -95,4 +96,4 @@ npm run build
 | `src/st-registry.js` | SillyTavern 매크로별 인자 개수와 형식 표 |
 | `src/bridge.js` | 생성 직전 값 채우기, 전역 변수 저장 |
 | `src/extension.js` | Marinara 안의 화면 |
-| `build.mjs` | 설치용 패키지(`release/`)를 만들어요 |
+| `build.mjs` | `src/`를 묶어 루트의 `extension.js`를 만들어요 |
