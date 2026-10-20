@@ -1,0 +1,10 @@
+{
+  "name": "marinara-st-macro-compat",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Marinara Engine extension that converts SillyTavern preset macros to Marinara syntax.",
+  "scripts": {
+    "build": "node build.mjs"
+  }
+}
